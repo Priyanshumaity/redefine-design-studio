@@ -1,0 +1,21 @@
+# Local source material and reports; production only needs the optimized public assets.
+/ALL IMAGES/**
+website_changes_and_verification_report.pdf
+*.py
+.DS_Store
+node_modules/
+.next/
+data/
+/public/images/all-images/*.webp
+!/public/images/all-images/img-4.webp
+/public/images/all-images/*.png
+/public/images/all-images/img-19.jpg
+/public/images/all-images/img-20.jpg
+/public/images/all-images/img-23.jpg
+/public/images/all-images/img-25.jpg
+/public/images/projects/amtala-industrial/**
+/public/images/projects/autohub/**
+/public/images/projects/ecostation/**
+/public/images/projects/hotel-interiors/**
+/public/images/projects/puri-diagnostic/**
+/public/images/projects/rajarhat-housing/**

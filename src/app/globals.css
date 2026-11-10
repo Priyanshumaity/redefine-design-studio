@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-serif: var(--font-sans);
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-hover: #FBE9F3;
+  --ink: #240318;
+  --mute: #654256;
+  --gold: #8A0D50;
+  --gold-hover: #5A0034;
+  --line: #E7E3DA;
+  --line-light: #ECE8E0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Images stay clean and editorial: no decorative cast shadows or text overlays. */
+*, *::before, *::after {
+  box-shadow: none !important;
+}
+
+/* Brand palette: maroon, plum, berry and pink on a clean white canvas. */
+[class~="bg-[#FBFBFA]"], [class~="bg-[#F4F1EA]"], [class~="bg-[#FAF9F5]"] {
+  background-color: #FFFFFF !important;
+}
+[class*="text-[#9E7D2D]"], [class*="text-[#C5A85C]"], [class*="text-[#D9C484]"], [class*="text-[#F4D887]"], [class*="text-[#8C6D24]"] {
+  color: #8A0D50 !important;
+}
+[class~="bg-[#9E7D2D]"], [class~="bg-[#C5A85C]"], [class~="bg-[#D9C484]"], [class~="bg-[#F4D887]"], [class~="bg-[#8C6D24]"] {
+  background-color: #8A0D50 !important;
+}
+[class*="border-[#9E7D2D]"], [class*="border-[#C5A85C]"], [class*="border-[#D9C484]"], [class*="border-[#F4D887]"], [class*="border-[#8C6D24]"] {
+  border-color: #8A0D50 !important;
+}
+
+.scroll-reveal {
+  transition: opacity 680ms cubic-bezier(0.16, 1, 0.3, 1), transform 680ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal.is-reveal-pending {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Custom Architectural Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F1EA;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4CEBF;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9E7D2D;
+}
+
+/* Selection Color */
+::selection {
+  background: #9E7D2D;
+  color: #FFFFFF;
+}
+
+/* Flip Box CSS 3D */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-12deg);
+  }
+  50%, 100% {
+    transform: translateX(250%) skewX(-12deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 3.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+main > * {
+  animation: fadeIn 0.45s ease-out both;
+}
+
+/* Native view-timeline reveal: progressive enhancement for modern browsers. */
+@supports (animation-timeline: view()) {
+  main > section:not(:first-child),
+  main > div > section {
+    animation: fadeInUp linear both;
+    animation-timeline: view();
+    animation-range: entry 8% cover 32%;
+  }
+}
+
+/* Cinematic Mask & Image Zoom Utilities */
+.mask-hero {
+  mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.text-stroke-gold {
+  -webkit-text-stroke: 1px rgba(158, 125, 45, 0.4);
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
